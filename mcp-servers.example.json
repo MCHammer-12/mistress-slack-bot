@@ -1,32 +1,11 @@
 {
   "mcpServers": {
-    "filesystem": {
+    "google-calendar": {
       "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-filesystem",
-        "/Users/username/Code/"
-      ]
-    },
-    "github": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "args": ["-y", "@cocal/google-calendar-mcp"],
       "env": {
-        "GITHUB_TOKEN": "your-github-token"
-      }
-    },
-    "postgres": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-postgres"],
-      "env": {
-        "POSTGRES_CONNECTION_STRING": "postgresql://user:password@localhost:5432/dbname"
-      }
-    },
-    "web-search": {
-      "type": "sse",
-      "url": "http://localhost:3001/sse",
-      "headers": {
-        "Authorization": "Bearer your-api-key"
+        "GOOGLE_OAUTH_CREDENTIALS": "/app/credentials/client_secret.json",
+        "GOOGLE_CALENDAR_TOKENS_PATH": "/app/credentials/tokens.json"
       }
     }
   }

@@ -6,7 +6,6 @@ import { WorkingDirectoryManager } from './working-directory-manager';
 import { FileHandler, ProcessedFile } from './file-handler';
 import { TodoManager, Todo } from './todo-manager';
 import { McpManager } from './mcp-manager';
-import { permissionServer } from './permission-mcp-server';
 import { config } from './config';
 
 interface MessageEvent {
@@ -755,8 +754,6 @@ export class SlackHandler {
       const approvalId = (body as any).actions[0].value;
       this.logger.info('Tool approval granted', { approvalId });
       
-      permissionServer.resolveApproval(approvalId, true);
-      
       await respond({
         response_type: 'ephemeral',
         text: '✅ Tool execution approved'
@@ -768,8 +765,6 @@ export class SlackHandler {
       await ack();
       const approvalId = (body as any).actions[0].value;
       this.logger.info('Tool approval denied', { approvalId });
-      
-      permissionServer.resolveApproval(approvalId, false);
       
       await respond({
         response_type: 'ephemeral',
