@@ -14,10 +14,17 @@ fi
 
 # Clone or update the context repo (the-mistress)
 if [ -n "$CONTEXT_REPO" ]; then
+  # Inject GitHub token into HTTPS URL if provided
+  if [ -n "$GITHUB_TOKEN" ]; then
+    CLONE_URL=$(echo "$CONTEXT_REPO" | sed "s|https://|https://$GITHUB_TOKEN@|")
+  else
+    CLONE_URL="$CONTEXT_REPO"
+  fi
+
   if [ -d /app/workspace/.git ]; then
     git -C /app/workspace pull --ff-only
   else
-    git clone "$CONTEXT_REPO" /app/workspace
+    git clone "$CLONE_URL" /app/workspace
   fi
 fi
 
