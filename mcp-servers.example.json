@@ -5,7 +5,7 @@
       "args": ["-y", "@cocal/google-calendar-mcp"],
       "env": {
         "GOOGLE_OAUTH_CREDENTIALS": "/app/credentials/client_secret.json",
-        "GOOGLE_CALENDAR_TOKENS_PATH": "/app/credentials/tokens.json"
+        "GOOGLE_ACCOUNT_MODE": "personal"
       }
     }
   }

@@ -8,8 +8,8 @@ if [ -n "$GOOGLE_OAUTH_CREDENTIALS_JSON" ]; then
 fi
 
 if [ -n "$GOOGLE_CALENDAR_TOKENS_JSON" ]; then
-  mkdir -p /app/credentials
-  echo "$GOOGLE_CALENDAR_TOKENS_JSON" > /app/credentials/tokens.json
+  mkdir -p /root/.config/google-calendar-mcp
+  echo "$GOOGLE_CALENDAR_TOKENS_JSON" > /root/.config/google-calendar-mcp/tokens.json
 fi
 
 # Clone or update the context repo (the-mistress)
